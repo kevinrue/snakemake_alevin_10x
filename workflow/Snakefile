@@ -8,11 +8,20 @@ report: "report/workflow.rst"
 singularity: "docker://continuumio/miniconda3"
 
 
+include: "rules/common.smk"
+print(samples)
+print()
+print(samples['sample'])
+print()
+print(samples['sample'].tolist())
+
+
 rule all:
     input:
         # The first rule should define the default target files
         # Subsequent target rules can be specified below. They should start with all_*.
+        expand("results/alevin/{sample}/rna/alevin/quants_mat.gz", sample=samples['sample'])
 
-
-include: "rules/common.smk"
+        
 include: "rules/other.smk"
+include: "rules/alevin.smk"
