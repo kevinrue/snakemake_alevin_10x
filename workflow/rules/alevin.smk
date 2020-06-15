@@ -45,7 +45,7 @@ rule alevin:
         threads=config['alevin']['threads']
     threads: config['alevin']['threads']
     resources:
-        mem_free=f"{config['alevin']['memory_per_cpu']}G"
+        mem_free=f"{config['alevin']['memory_per_cpu']}"
     log: stderr="logs/alevin/{sample}/rna.log"
     shell:
         """

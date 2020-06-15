@@ -20,5 +20,5 @@ alevin:
   barcode_length: 16
   # resources
   threads: 16
-  memory_per_cpu: 5G
+  memory_per_cpu: 5
 
