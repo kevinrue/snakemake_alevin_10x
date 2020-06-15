@@ -14,17 +14,29 @@ def get_cells_option(wildcards):
     '''
     wildcards
     - sample: name of the sample to process.
+    
+    Note that users should supply only one of 'expect_cells' or 'force_cells'.
+    The other one should be set to 0, to be ignored.
     '''
+    option_str = ""
+    
     expect_cells = samples['expect_cells'][wildcards.sample]
-    option_str = f"--expectCells {expect_cells}"
+    force_cells = samples['force_cells'][wildcards.sample]
+
+    if expect_cells > 0:
+        option_str += f" --expectCells {expect_cells}"
+    
+    if force_cells > 0:
+        option_str += f" --forceCells {force_cells}"
+    
     return option_str
 
 
-rule alevin_rna:
+rule alevin:
     input:
         unpack(get_gex_fastq)
     output:
-        "results/alevin/{sample}/rna/alevin/quants_mat.gz"
+        "results/{sample}/alevin/quants_mat.gz"
     params:
         output_folder=lambda wildcards, output: output[0].replace("/alevin/quants_mat.gz", ""),
         index=config['alevin']['sa_index'],
@@ -33,7 +45,7 @@ rule alevin_rna:
         threads=config['alevin']['threads']
     threads: config['alevin']['threads']
     resources:
-        mem_free=config['alevin']['memory_per_cpu']
+        mem_free=f"{config['alevin']['memory_per_cpu']}G"
     log: stderr="logs/alevin/{sample}/rna.log"
     shell:
         """
@@ -44,3 +56,17 @@ rule alevin_rna:
         {params.cells_option} \
         2> {log.stderr}
         """
+
+
+rule barcode_rank:
+    input:
+        quants="results/{sample}/alevin/quants_mat.gz"
+    output:
+        report("results/{sample}/barcode_rank.svg", caption="report/barcode_rank.{sample}.rst", category="Barcode-rank")
+    conda:
+        "envs/bioc_3_11.yaml"
+    log:
+        # optional path to the processed notebook
+        notebook="logs/notebooks/barcode_rank.{sample}.ipynb"
+    notebook:
+        "barcode_rank.r.ipynb"
