@@ -56,17 +56,3 @@ rule alevin:
         {params.cells_option} \
         2> {log.stderr}
         """
-
-
-rule barcode_rank:
-    input:
-        quants="results/{sample}/alevin/quants_mat.gz"
-    output:
-        report("results/{sample}/barcode_rank.svg", caption="report/barcode_rank.{sample}.rst", category="Barcode-rank")
-    conda:
-        "envs/bioc_3_11.yaml"
-    log:
-        # optional path to the processed notebook
-        notebook="logs/notebooks/barcode_rank.{sample}.ipynb"
-    notebook:
-        "barcode_rank.r.ipynb"
