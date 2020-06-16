@@ -43,6 +43,8 @@ rule alevin:
         tgmap=config['alevin']['tgmap'],
         cells_option=get_cells_option,
         threads=config['alevin']['threads']
+#     conda:
+#         "../envs/alevin.yaml" # until next release, use binary on PATH
     threads: config['alevin']['threads']
     resources:
         mem_free=f"{config['alevin']['memory_per_cpu']}"
@@ -56,12 +58,14 @@ rule alevin:
         {params.cells_option} \
         2> {log.stderr}
         """
+
+
 rule barcode_rank:
     input:
         quants="results/{sample}/alevin/quants_mat.gz"
     output:
         report("results/{sample}/barcode_rank.svg", caption="report/barcode_rank.{sample}.rst", category="Barcode-rank")
     conda:
-        "envs/bioc_3_11.yaml"
+        "../envs/bioc_3_11.yaml"
     script:
         "scripts/barcode_rank.R"
