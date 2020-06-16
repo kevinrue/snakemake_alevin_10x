@@ -7,7 +7,15 @@ properties:
   sample:
     type: string
     description: sample name/identifier
+  expect_cells:
+    type: integer
+    description: number of cells expected (set to 0 to disable)
+  force_cells:
+    type: integer
+    description: forced number of cells recovered (set to 0 to disable)
 
 # columns that the config/samples.tsv file must have to pass schema validation
 required:
   - sample
+  - expect_cells
+  - force_cells
