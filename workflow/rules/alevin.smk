@@ -36,5 +36,6 @@ rule barcode_rank:
         report("results/{sample}/figures/barcode_rank.svg", caption="../report/barcode_rank.rst", category="Barcode rank plot")
     conda:
         "../envs/bioc_3_11.yaml"
+    log: script="logs/alevin/{sample}/rna.log"
     script:
         "../scripts/barcode_rank.R"
