@@ -7,7 +7,7 @@ rule alevin:
     output:
         "results/{sample}/salmon/alevin/quants_mat.gz"
     params:
-        output_folder=lambda wildcards, output: output[0].replace("/alevin/quants_mat.gz", ""),
+        output_folder=lambda wildcards, output: output[0].replace("alevin/quants_mat.gz", ""),
         index=config['alevin']['sa_index'],
         tgmap=config['alevin']['tgmap'],
         cells_option=get_cells_option,
