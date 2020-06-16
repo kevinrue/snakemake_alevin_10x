@@ -17,7 +17,7 @@ rule alevin:
     threads: config['alevin']['threads']
     resources:
         mem_free_gb=f"{config['alevin']['memory_per_cpu']}"
-    log: stderr="logs/alevin/{sample}/rna.log"
+    log: stderr="results/logs/alevin/{sample}.log"
     shell:
         """
         salmon alevin -l ISR -i {params.index} \
@@ -36,6 +36,6 @@ rule barcode_rank:
         report("results/{sample}/figures/barcode_rank.svg", caption="../report/barcode_rank.rst", category="Barcode rank plot")
     conda:
         "../envs/bioc_3_11.yaml"
-    log: script="logs/alevin/{sample}/rna.log"
+    log: script="results/logs/barcode_rank/{sample}.log"
     script:
         "../scripts/barcode_rank.R"
