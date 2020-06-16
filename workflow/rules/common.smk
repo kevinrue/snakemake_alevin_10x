@@ -23,13 +23,14 @@ def get_gex_fastq(wildcards):
     wildcards
     - sample: name of the sample to process.
     '''
-    fastq1_pattern = f"data/{wildcards.sample}_fastqs/*_R1_001.fastq.gz"
-    fastq1 = glob.glob(fastq1_pattern)
+    fastq1_pattern = config["pattern"]["read1"]
+    fastq1_glob = f"data/{wildcards.sample}_fastqs/*{fastq1_pattern}*"
+    fastq1 = glob.glob(fastq1_glob)
     
     if len(fastq1) == 0:
-        raise OSError(f"No file matched pattern: {fastq1_pattern}")
+        raise OSError(f"No file matched pattern: {fastq1_glob}")
     
-    fastq2 = [file.replace("_R1_001.fastq.gz", "_R2_001.fastq.gz") for file in fastq1]
+    fastq2 = [file.replace(config["pattern"]["read1"], config["pattern"]["read2"]) for file in fastq1]
     for file in fastq2:
         if not os.path.exists(file):
             raise OSError(f"Paired file not found: {file}")

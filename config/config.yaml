@@ -3,6 +3,11 @@
 # one row per sample. It can be parsed easily via pandas.
 samples: "config/samples.tsv"
 
+pattern:
+    # Pattern matching the filename of paired reads
+    read1: "_R1_001.fastq.gz"
+    read2: "_R2_001.fastq.gz"
+
 alevin:
   # transcript to gene map tsv file (--tgMap)
   tgmap: "/ifs/mirror/alevin/txp2gene.tsv"
