@@ -16,7 +16,7 @@ rule alevin:
 #         "../envs/alevin.yaml" # until next release, use binary on PATH
     threads: config['alevin']['threads']
     resources:
-        mem_free=f"{config['alevin']['memory_per_cpu']}"
+        mem_free_gb=f"{config['alevin']['memory_per_cpu']}"
     log: stderr="logs/alevin/{sample}/rna.log"
     shell:
         """
