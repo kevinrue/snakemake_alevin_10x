@@ -68,4 +68,4 @@ rule barcode_rank:
     conda:
         "../envs/bioc_3_11.yaml"
     script:
-        "scripts/barcode_rank.R"
+        "../scripts/barcode_rank.R"
