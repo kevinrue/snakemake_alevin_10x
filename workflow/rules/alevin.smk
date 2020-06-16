@@ -1,7 +1,7 @@
 import glob
 
 
-rule alevin:
+rule salmon_alevin:
     input:
         unpack(get_gex_fastq)
     output:
