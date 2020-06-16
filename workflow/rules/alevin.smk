@@ -63,8 +63,5 @@ rule barcode_rank:
         report("results/{sample}/barcode_rank.svg", caption="report/barcode_rank.{sample}.rst", category="Barcode-rank")
     conda:
         "envs/bioc_3_11.yaml"
-    log:
-        # optional path to the processed notebook
-        notebook="logs/notebooks/barcode_rank.{sample}.ipynb"
-    notebook:
-        "barcode_rank.r.ipynb"
+    script:
+        "scripts/barcode_rank.R"
