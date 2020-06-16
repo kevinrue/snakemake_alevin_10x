@@ -36,7 +36,7 @@ rule alevin:
     input:
         unpack(get_gex_fastq)
     output:
-        "results/{sample}/alevin/quants_mat.gz"
+        "results/{sample}/salmon/alevin/quants_mat.gz"
     params:
         output_folder=lambda wildcards, output: output[0].replace("/alevin/quants_mat.gz", ""),
         index=config['alevin']['sa_index'],
@@ -62,9 +62,9 @@ rule alevin:
 
 rule barcode_rank:
     input:
-        quants="results/{sample}/alevin/quants_mat.gz"
+        quants="results/{sample}/salmon/alevin/quants_mat.gz"
     output:
-        report("results/{sample}/barcode_rank.svg", caption="report/barcode_rank.{sample}.rst", category="Barcode-rank")
+        report("results/{sample}/figures/barcode_rank.svg", caption="report/barcode_rank.{sample}.rst", category="Barcode-rank")
     conda:
         "../envs/bioc_3_11.yaml"
     script:
