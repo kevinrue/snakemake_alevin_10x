@@ -64,7 +64,7 @@ rule barcode_rank:
     input:
         quants="results/{sample}/salmon/alevin/quants_mat.gz"
     output:
-        report("results/{sample}/figures/barcode_rank.svg", caption="report/barcode_rank.{sample}.rst", category="Barcode-rank")
+        report("results/{sample}/figures/barcode_rank.svg", caption="../report/barcode_rank.rst", category="Barcode rank plot")
     conda:
         "../envs/bioc_3_11.yaml"
     script:
