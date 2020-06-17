@@ -23,8 +23,9 @@ def get_gex_fastq(wildcards):
     wildcards
     - sample: name of the sample to process.
     '''
+    fastq1_dir = samples["fastqs"][wildcards.sample]
     fastq1_pattern = config["pattern"]["read1"]
-    fastq1_glob = f"data/{wildcards.sample}_fastqs/*{fastq1_pattern}*"
+    fastq1_glob = f"{fastq1_dir}/*{fastq1_pattern}*"
     fastq1 = glob.glob(fastq1_glob)
     
     if len(fastq1) == 0:
