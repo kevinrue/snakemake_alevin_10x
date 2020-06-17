@@ -7,6 +7,9 @@ properties:
   sample:
     type: string
     description: sample name/identifier
+  fastqs:
+    type: string
+    description: path to the folder that contains FASTQ files
   expect_cells:
     type: integer
     description: number of cells expected (set to 0 to disable)
@@ -17,5 +20,6 @@ properties:
 # columns that the config/samples.tsv file must have to pass schema validation
 required:
   - sample
+  - fastqs
   - expect_cells
   - force_cells

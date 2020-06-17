@@ -18,21 +18,6 @@ If you use this workflow in a paper, don't forget to give credits to the authors
 
 1. Create a new github repository using this workflow [as a template](https://help.github.com/en/articles/creating-a-repository-from-a-template).
 2. [Clone](https://help.github.com/en/articles/cloning-a-repository) the newly created repository to your local system, into the place where you want to perform the data analysis.
-3. At the top level of the cloned repository, create a folder `data/` in which you will store FASTQ files for each sample in the following directory structure:
-
-```
-data/
-├── sample1/
-│   ├── run1_R1_001.fastq.gz
-│   ├── run1_R2_001.fastq.gz
-│   ├── run2_R1_001.fastq.gz
-│   └── run2_R2_001.fastq.gz
-└── sample2/
-    ├── run3_R1_001.fastq.gz
-    ├── run3_R2_001.fastq.gz
-    ├── run4_R1_001.fastq.gz
-    └── run4_R2_001.fastq.gz
-```
 
 ### Step 2: Configure workflow
 
