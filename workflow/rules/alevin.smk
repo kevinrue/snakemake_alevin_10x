@@ -12,8 +12,8 @@ rule salmon_alevin:
         tgmap=config['alevin']['tgmap'],
         cells_option=get_cells_option,
         threads=config['alevin']['threads']
-#     conda:
-#         "../envs/alevin.yaml" # until next release, use binary on PATH
+    conda:
+        "../envs/alevin.yaml"
     threads: config['alevin']['threads']
     resources:
         mem_free_gb=f"{config['alevin']['memory_per_cpu']}"

@@ -1,4 +1,4 @@
-# conda environments needed for the workflow should be stored here.
+name: bioc_3_11
 channels:
   - bioconda
   - conda-forge
