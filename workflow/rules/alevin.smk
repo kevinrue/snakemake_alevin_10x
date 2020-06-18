@@ -1,11 +1,11 @@
 import glob
 
 
-rule salmon_alevin:
+rule alevin:
     input:
         unpack(get_gex_fastq)
     output:
-        "results/{sample}/salmon/alevin/quants_mat.gz"
+        "results/alevin/{sample}/alevin/quants_mat.gz"
     params:
         output_folder=lambda wildcards, output: output[0].replace("alevin/quants_mat.gz", ""),
         index=config['alevin']['sa_index'],
@@ -31,9 +31,9 @@ rule salmon_alevin:
 
 rule barcode_rank:
     input:
-        quants="results/{sample}/salmon/alevin/quants_mat.gz"
+        quants="results/alevin/{sample}/alevin/quants_mat.gz"
     output:
-        report("results/{sample}/figures/barcode_rank.svg", caption="../report/barcode_rank.rst", category="Barcode rank plot")
+        report("results/plots/{sample}/barcode_rank.svg", caption="../report/barcode_rank.rst", category="Barcode rank plot")
     conda:
         "../envs/bioc_3_11.yaml"
     log: script="results/logs/barcode_rank/{sample}.log"
