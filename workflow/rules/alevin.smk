@@ -7,7 +7,6 @@ rule alevin:
     output:
         "results/alevin/{sample}/alevin/quants_mat.gz"
     params:
-        output_folder=lambda wildcards, output: output[0].replace("alevin/quants_mat.gz", ""),
         index=config['alevin']['sa_index'],
         tgmap=config['alevin']['tgmap'],
         cells_option=get_cells_option,
@@ -22,7 +21,7 @@ rule alevin:
         """
         salmon alevin -l ISR -i {params.index} \
         -1 {input.fastq1} -2 {input.fastq2} \
-        -o {params.output_folder} -p {params.threads} --tgMap {params.tgmap} \
+        -o results/alevin/{wildcards.sample} -p {params.threads} --tgMap {params.tgmap} \
         --chromium --dumpFeatures \
         {params.cells_option} \
         2> {log.stderr}
