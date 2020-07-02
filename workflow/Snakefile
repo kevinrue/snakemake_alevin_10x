@@ -4,6 +4,7 @@
 
 report: "report/workflow.rst"
 
+localrules: all, download_genome
 
 include: "rules/common.smk"
 
@@ -17,5 +18,6 @@ rule all:
                sample=samples['sample'])
 
 
-include: "rules/other.smk"
+include: "rules/salmon.smk"
 include: "rules/alevin.smk"
+include: "rules/other.smk"
