@@ -5,7 +5,7 @@
 report: "report/workflow.rst"
 
 localrules: all,
-    genome, transcriptome, decoys
+    genome, transcriptome, decoys, concatenate_genome_transcriptome
 
 include: "rules/common.smk"
 

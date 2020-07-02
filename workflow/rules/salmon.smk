@@ -31,3 +31,15 @@ rule decoys:
         cut -d " " -f 1 |
         sed -e 's/>//g' > {output}
         '''
+
+
+rule concatenate_genome_transcriptome:
+    input:
+        genome='resources/genome.fa.gz',
+        transcriptome='resources/transcriptome.fa.gz'
+    output:
+        'resources/gentrome.fa.gz'
+    shell:
+        '''
+        cat {input.transcriptome} {input.genome} > {output}
+        '''
