@@ -4,7 +4,8 @@
 
 report: "report/workflow.rst"
 
-localrules: all, download_genome
+localrules: all,
+    genome, transcriptome, decoys
 
 include: "rules/common.smk"
 
