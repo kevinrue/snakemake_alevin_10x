@@ -43,3 +43,23 @@ rule concatenate_genome_transcriptome:
         '''
         cat {input.transcriptome} {input.genome} > {output}
         '''
+
+
+rule salmon_index:
+    input:
+        gentrome='resources/gentrome.fa.gz',
+        decoys='resources/decoys.txt'
+    output:
+        directory('resources/salmon_index')
+    params:
+        threads=config['salmon']['threads']
+    #conda:
+    #    "../envs/salmon.yaml"
+    threads: config['salmon']['threads']
+    resources:
+        mem_free_gb=f"{config['salmon']['memory_per_cpu']}"
+    log: 'resources/salmon_index.log'
+    shell:
+        '''
+        salmon index -t {input.gentrome} -d {input.decoys} -p {params.threads} -i {output} 2> {log}
+        '''
