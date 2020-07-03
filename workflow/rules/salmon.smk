@@ -72,3 +72,15 @@ rule salmon_index:
         '''
         salmon index -t {input.gentrome} -d {input.decoys} -p {params.threads} -i {output} 2> {log}
         '''
+
+
+rule transcript_gene_map:
+    input:
+        gtf='resources/genesets.gtf.gz'
+    output:
+        tgmap='resources/txp2gene.tsv'
+    conda:
+        "../envs/bioc_3_11.yaml"
+    log: script="results/logs/transcript_gene_map.log"
+    script:
+        "../scripts/txp2gene.R"
