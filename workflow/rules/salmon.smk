@@ -20,6 +20,15 @@ rule transcriptome:
         shell('mv {input} {output}')
 
 
+rule genesets:
+    input:
+        FTP.remote(config['salmon']['genesets'])
+    output:
+        'resources/genesets.gtf.gz'
+    run:
+        shell('mv {input} {output}')
+
+
 rule decoys:
     input:
         'resources/genome.fa.gz'
