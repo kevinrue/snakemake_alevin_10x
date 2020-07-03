@@ -9,9 +9,9 @@ pattern:
     read2: "_R2_001.fastq.gz"
 
 alevin:
-  # transcript to gene map tsv file (--tgMap)
+  # (deprecated / ignored) - predefined transcript to gene map tsv file (--tgMap)
   tgmap: "/ifs/mirror/alevin/txp2gene.tsv"
-  # Selective alignment index
+  # (deprecated / ignored) - predefined selective alignment index
   sa_index: "/ifs/mirror/alevin/salmon_partial_sa_index"
   # starting index of the feature barcode on Read2 (--featureStart)
   feature_start: 0

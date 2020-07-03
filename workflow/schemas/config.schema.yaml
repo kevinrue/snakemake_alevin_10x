@@ -23,10 +23,6 @@ properties:
   alevin:
     type: object
     properties:
-      tgmap:
-        type: string
-      sa_index:
-        type: string
       feature_start:
         type: integer
       feature_length:
@@ -42,8 +38,6 @@ properties:
       memory_per_cpu:
         type: integer
     required:
-      - tgmap
-      - sa_index
       - feature_start
       - feature_length
       - end
