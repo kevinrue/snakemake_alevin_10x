@@ -15,6 +15,8 @@ rule all:
     input:
         # The first rule should define the default target files
         # Subsequent target rules can be specified below. They should start with all_*.
+        'resources/salmon_index',
+        'resources/txp2gene.tsv',
         expand(["results/alevin/{sample}/alevin/quants_mat.gz",
                 "results/plots/{sample}/barcode_rank.svg"],
                sample=samples['sample'])
