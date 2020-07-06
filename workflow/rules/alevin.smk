@@ -26,14 +26,3 @@ rule alevin:
         2> {log.stderr}
         """
 
-
-rule barcode_rank:
-    input:
-        quants="results/alevin/{sample}/alevin/quants_mat.gz"
-    output:
-        report("results/plots/{sample}/barcode_rank.svg", caption="../report/barcode_rank.rst", category="Barcode rank plot")
-    conda:
-        "../envs/bioc_3_11.yaml"
-    log: script="results/logs/barcode_rank/{sample}.log"
-    script:
-        "../scripts/barcode_rank.R"
