@@ -1,8 +1,20 @@
-library(rtracklayer)
+message("Started")
 
+#
+# Manage script inputs
+#
 gtf_file <- snakemake@input[["gtf"]]
 tgmap_file <- snakemake@output[[1]]
 
+#
+# Manage R packages
+#
+renv::activate()
+library(rtracklayer)
+
+#
+# Main script
+#
 gtf_data <- import.gff2(gtf_file, feature.type = 'transcript')
 stopifnot(all(gtf_data$type == 'transcript'))
 
@@ -12,3 +24,4 @@ tg_map <- unique(tg_map)
 write.table(tg_map, tgmap_file, quote = FALSE, sep = '\t', row.names = FALSE, col.names = FALSE)
 
 sessioninfo::session_info()
+message("Completed")

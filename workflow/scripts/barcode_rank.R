@@ -1,12 +1,24 @@
+message("Started")
+
+#
+# Manage script inputs
+#
+quants_mat_file <- snakemake@input[["quants"]]
+plot_file <- snakemake@output[[1]]
+
+#
+# Manage R packages
+#
+renv::activate()
 library(tidyverse)
 library(tximport)
 library(DelayedMatrixStats)
 library(cowplot)
 library(sessioninfo)
 
-quants_mat_file <- snakemake@input[["quants"]]
-plot_file <- snakemake@output[[1]]
-
+#
+# Main script
+#
 txi <- tximport::tximport(files = quants_mat_file, type = "alevin")
 str(txi)
 
@@ -23,3 +35,4 @@ plot <- tibble(
 ggsave(filename = plot_file, plot = plot)
 
 sessioninfo::session_info()
+message("Completed")
