@@ -62,8 +62,8 @@ rule salmon_index:
         directory('resources/salmon_index')
     params:
         threads=config['salmon']['threads']
-    #conda:
-    #    "../envs/salmon.yaml"
+    conda:
+        "../envs/salmon.yaml"
     threads: config['salmon']['threads']
     resources:
         mem_free_gb=f"{config['salmon']['memory_per_cpu']}"

@@ -9,8 +9,8 @@ rule alevin:
     params:
         cells_option=get_cells_option,
         threads=config['alevin']['threads']
-    #conda:
-    #    "../envs/salmon.yaml"
+    conda:
+        "../envs/salmon.yaml"
     threads: config['alevin']['threads']
     resources:
         mem_free_gb=f"{config['alevin']['memory_per_cpu']}"
