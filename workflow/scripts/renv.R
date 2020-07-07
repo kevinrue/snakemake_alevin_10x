@@ -6,5 +6,6 @@
 # options(configure.args = configure.args)
 
 options(Ncpus = 2) # TODO: parameterize
+options(renv.consent = TRUE)
 
 renv::init()
