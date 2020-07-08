@@ -31,18 +31,17 @@
       "Source": "Bioconductor",
       "Hash": "9c244ae3f0175866fd18dd9df6e48beb"
     },
-    "BiocManager": {
-      "Package": "BiocManager",
-      "Version": "1.30.10",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "db75371846625725e221470b310da1d5"
-    },
     "BiocParallel": {
       "Package": "BiocParallel",
       "Version": "1.23.1",
       "Source": "Bioconductor",
       "Hash": "0affc03726ddd78e7e2bc7d843987c3e"
+    },
+    "BiocVersion": {
+      "Package": "BiocVersion",
+      "Version": "3.11.1",
+      "Source": "Bioconductor",
+      "Hash": "2331d61d077a7a0a5afe8c907ea9106b"
     },
     "Biostrings": {
       "Package": "Biostrings",
@@ -149,9 +148,15 @@
     },
     "Rhdf5lib": {
       "Package": "Rhdf5lib",
-      "Version": "1.11.2",
-      "Source": "Bioconductor",
-      "Hash": "3d2fdf7358c9fdf182f8c9136c947e0e"
+      "Version": "1.11.2-1",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "Rhdf5lib",
+      "RemoteUsername": "grimbough",
+      "RemoteRef": "ld-flags",
+      "RemoteSha": "d8b08e1fdc90dc54c7c1468b97f9873217e0458d",
+      "Hash": "47e14681ce4ea228bfc7738904bada23"
     },
     "Rhtslib": {
       "Package": "Rhtslib",
