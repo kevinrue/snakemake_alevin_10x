@@ -24,4 +24,5 @@ rule all:
 
 include: "rules/salmon.smk"
 include: "rules/alevin.smk"
+include: "rules/qc.smk"
 include: "rules/other.smk"

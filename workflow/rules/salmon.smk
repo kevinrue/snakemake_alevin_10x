@@ -80,7 +80,7 @@ rule transcript_gene_map:
     output:
         tgmap='resources/txp2gene.tsv'
     conda:
-        "../envs/bioc_3_11.yaml"
+        "../envs/r.yaml"
     log: script="results/logs/transcript_gene_map.log"
     script:
         "../scripts/txp2gene.R"

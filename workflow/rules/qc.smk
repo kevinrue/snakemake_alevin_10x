@@ -5,7 +5,7 @@ rule barcode_rank:
     output:
         report("results/plots/{sample}/barcode_rank.svg", caption="../report/barcode_rank.rst", category="Barcode rank plot")
     conda:
-        "../envs/bioc_3_11.yaml"
+        "../envs/r.yaml"
     log: script="results/logs/barcode_rank/{sample}.log"
     script:
         "../scripts/barcode_rank.R"
