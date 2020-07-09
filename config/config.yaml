@@ -3,6 +3,8 @@
 # one row per sample. It can be parsed easily via pandas.
 samples: "config/samples.tsv"
 
+renv: true
+
 pattern:
     # Pattern matching the filename of paired reads
     read1: "_R1_001.fastq.gz"
