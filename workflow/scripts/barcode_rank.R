@@ -5,6 +5,7 @@ message("Started")
 #
 quants_mat_file <- snakemake@input[["quants"]]
 plot_file <- snakemake@output[[1]]
+renv <- snakemake@params[['renv']]
 
 #
 # Manage R packages
