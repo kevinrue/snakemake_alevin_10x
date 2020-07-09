@@ -118,17 +118,4 @@ LDFLAGS+="-mlinker-version=305"
 
 Q: I run into an error during the `renv` rule when installing the `XML` package.
 
-A: You may need the following in your `$HOME/.R/Makevars`
-
-```
-LDFLAGS+="-L/usr/local/opt/libxml2/lib"
-CPPFLAGS+="-I/usr/local/opt/libxml2/include"
-PKG_CONFIG_PATH+="/usr/local/opt/libxml2/lib/pkgconfig"
-```
-
-And the following in your `bashrc` or equivalent:
-
-```
-export PATH="/usr/local/opt/libxml2/bin:$PATH"
-```
-
+A: ?
