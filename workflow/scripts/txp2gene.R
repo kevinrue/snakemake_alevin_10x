@@ -3,13 +3,16 @@ message("Started")
 #
 # Manage script inputs
 #
-gtf_file <- snakemake@input[["gtf"]]
+gtf_file <- snakemake@input[['gtf']]
 tgmap_file <- snakemake@output[[1]]
+renv <- snakemake@params[['renv']]
 
 #
 # Manage R packages
 #
-renv::activate()
+if (renv) {
+	renv::activate()
+}
 library(rtracklayer)
 library(tidyverse)
 

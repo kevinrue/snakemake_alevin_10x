@@ -79,6 +79,8 @@ rule transcript_gene_map:
         gtf='resources/genesets.gtf.gz'
     output:
         tgmap='resources/txp2gene.tsv'
+    params:
+        renv=config['renv']
     log: script="results/logs/transcript_gene_map.log"
     script:
         "../scripts/txp2gene.R"
