@@ -106,3 +106,29 @@ In case you have also changed or added steps, please consider contributing them 
 
 Test cases are in the subfolder `.test`. They are automatically executed via continuous integration with [Github Actions](https://github.com/features/actions).
 
+## FAQ
+
+Q: I run into an error during the `renv` rule when installing the `Rhdf5lib` package.
+
+A: You may need the following in your `$HOME/.R/Makevars`
+
+```
+LDFLAGS+="-mlinker-version=305"
+```
+
+Q: I run into an error during the `renv` rule when installing the `XML` package.
+
+A: You may need the following in your `$HOME/.R/Makevars`
+
+```
+LDFLAGS+="-L/usr/local/opt/libxml2/lib"
+CPPFLAGS+="-I/usr/local/opt/libxml2/include"
+PKG_CONFIG_PATH+="/usr/local/opt/libxml2/lib/pkgconfig"
+```
+
+And the following in your `bashrc` or equivalent:
+
+```
+export PATH="/usr/local/opt/libxml2/bin:$PATH"
+```
+
