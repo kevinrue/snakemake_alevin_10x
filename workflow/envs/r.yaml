@@ -5,3 +5,4 @@ channels:
 dependencies:
   - r-base=4.0.2
   - r-renv=0.11.0
+  - r-biocmanager=1.30.10
