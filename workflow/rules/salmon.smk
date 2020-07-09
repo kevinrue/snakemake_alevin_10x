@@ -62,8 +62,8 @@ rule salmon_index:
         directory('resources/salmon_index')
     params:
         threads=config['salmon']['threads']
-    #conda:
-    #    "../envs/salmon.yaml"
+    conda:
+       "../envs/salmon.yaml"
     threads: config['salmon']['threads']
     resources:
         mem_free_gb=f"{config['salmon']['memory_per_cpu']}"
@@ -80,7 +80,7 @@ rule transcript_gene_map:
     output:
         tgmap='resources/txp2gene.tsv'
     conda:
-        "../envs/bioc_3_11.yaml"
+        "../envs/r.yaml"
     log: script="results/logs/transcript_gene_map.log"
     script:
         "../scripts/txp2gene.R"
