@@ -9,7 +9,6 @@ plot_file <- snakemake@output[[1]]
 #
 # Manage R packages
 #
-renv::activate()
 library(tidyverse)
 library(tximport)
 library(DelayedMatrixStats)

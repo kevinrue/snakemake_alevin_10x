@@ -9,7 +9,6 @@ tgmap_file <- snakemake@output[[1]]
 #
 # Manage R packages
 #
-renv::activate()
 library(rtracklayer)
 
 #
